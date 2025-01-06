@@ -4,17 +4,18 @@
 FROM maven:3-openjdk-17 AS build
 WORKDIR /app
 COPY . /app/
-RUN mvn clean package
+# Add -DskipTests to skip tests during build (if necessary)
+RUN mvn clean package -DskipTests
 
 #
 # Package stage
 #
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY target/*.jar /app/backend-byspring.jar
+# Copy the generated JAR from the build stage
+COPY --from=build /app/target/*.jar /app/backend-byspring.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "backend-byspring.jar"]
-
+ENTRYPOINT ["java", "-jar", "/app/backend-byspring.jar"]
 
 
 
