@@ -11,10 +11,9 @@ RUN mvn clean package
 #
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/*.jar /app/app.jar
+COPY target/*.jar /app/backend-byspring.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
-
+ENTRYPOINT ["java", "-jar", "backend-byspring.jar"]
 
 
 
