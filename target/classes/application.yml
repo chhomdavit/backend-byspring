@@ -3,7 +3,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/backend_spring
     username: postgres
     password: root
-    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://dpg-ctub0phopnds73ck9jag-a.singapore-postgres.render.com:5432/backendbyspring
+#    username: root
+#    password: LM9lj6zPW8PYrh094Q6Erq5gJwcOBGHV
+
 
   jpa:
     hibernate:

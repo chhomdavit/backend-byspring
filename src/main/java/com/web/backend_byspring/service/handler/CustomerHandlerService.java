@@ -3,16 +3,14 @@ package com.web.backend_byspring.service.handler;
 import com.web.backend_byspring.dto.CustomerRequest;
 import com.web.backend_byspring.dto.CustomerRespones;
 import com.web.backend_byspring.enumeration.Roles;
-import com.web.backend_byspring.exception.AlreadyException;
 import com.web.backend_byspring.model.Customer;
-import com.web.backend_byspring.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Value;
 import com.web.backend_byspring.service.Impl.EmailServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -21,11 +19,13 @@ public class CustomerHandlerService {
 
     private final EmailServiceImpl emailServiceImpl;
     private final PasswordEncoder passwordEncoder;
-    private final CustomerRepository customerRepository;
+
+    @Value("${base.url}")
+    private String baseUrl;
 
     public void sendVerificationEmail(String email, String verificationCode) {
         String subject = "Email verification";
-        String verificationUrl = "http://localhost:8080/api/v1/customers/verify?email=" + email + "&verificationCode=" + verificationCode;
+        String verificationUrl = baseUrl + "/api/v1/customers/verify?email=" + email + "&verificationCode=" + verificationCode;
         String body = "<html>"
                 + "<body>"
                 + "<p>Your verification code is: <b>" + verificationCode + "</b></p>"
