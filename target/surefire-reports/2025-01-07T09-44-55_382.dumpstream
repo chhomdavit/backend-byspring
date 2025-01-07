@@ -1,5 +1,0 @@
-# Created at 2025-01-07T09:44:55.740
-Boot Manifest-JAR contains absolute paths in classpath 'D:\users-management-system-java-react\backend-byspring\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
