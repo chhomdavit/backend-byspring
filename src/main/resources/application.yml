@@ -3,6 +3,9 @@ server:
 
 spring:
   datasource:
+#    url: jdbc:postgresql://localhost:5432/backend_spring
+#    username: postgres
+#    password: root
     url: jdbc:postgresql://dpg-ctu03srqf0us73evrdpg-a.singapore-postgres.render.com:5432/backend_byspring
     username: backend_byspring_user
     password: 8snNbVWtBn5R8a2uMhnrtOSQ6zBsdrXI
