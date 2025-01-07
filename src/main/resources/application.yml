@@ -4,7 +4,6 @@ spring:
     username: root
     password: LM9lj6zPW8PYrh094Q6Erq5gJwcOBGHV
 
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -34,7 +33,7 @@ spring:
 project:
   upload: upload/
 base:
-  url: http://dpg-ctub0phopnds73ck9jag-a
+  url: https://backend-byspring.onrender.com
 
 
 

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -37,17 +38,7 @@ public class FileUploadController {
     }
 
     @PostMapping(value = "/single", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public FileRespones uploadSingle(@RequestPart MultipartFile file) {
-        return fileUploadService.uploadSingle(file, path);
-    }
-
-    @PostMapping(value = "/multiple", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public List<FileRespones> uploadMultiple(@RequestPart List<MultipartFile> files) {
-        return fileUploadService.uploadMultiple(files, path);
-    }
-
-    @GetMapping("/findAll")
-    public List<FileRespones> findAll() {
-        return fileUploadService.findAll();
+    public String uploadSingle(@RequestPart MultipartFile file) {
+        return fileUploadService.saveFile(file, path);
     }
 }

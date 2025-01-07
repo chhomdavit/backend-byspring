@@ -7,13 +7,19 @@ spring:
 #    username: root
 #    password: LM9lj6zPW8PYrh094Q6Erq5gJwcOBGHV
 
-
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
 
   mail:
     host: smtp.gmail.com
@@ -30,7 +36,7 @@ spring:
 project:
   upload: upload/
 base:
-  url: http://localhost:8080
+  url: https://backend-byspring.onrender.com
 
 
 

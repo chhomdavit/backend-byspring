@@ -48,9 +48,14 @@ public class ProductServiceImpl implements ProductService {
         }
         Product product = new Product();
         product = productHandlerService.convertProductRequestToProduct(productRequest, product);
+//        if (file != null && !file.isEmpty()) {
+//            FileRespones fileResponse = fileUploadService.saveFile(path, file);
+//            product.setProductImage(fileResponse.getName());
+//        }
+        String newFileName = null;
         if (file != null && !file.isEmpty()) {
-            FileRespones fileResponse = fileUploadService.uploadSingle(file, path);
-            product.setProductImage(fileResponse.getName());
+            newFileName = fileUploadService.saveFile(file, path);
+            product.setProductImage(newFileName);
         }
         productRepository.saveAndFlush(product);
         return productHandlerService.convertProductToProductResponse(product);
@@ -67,8 +72,7 @@ public class ProductServiceImpl implements ProductService {
                     if (updateProduct.getProductImage() != null && !updateProduct.getProductImage().isEmpty()) {
                         Files.deleteIfExists(Paths.get(path, updateProduct.getProductImage()));
                     }
-                    FileRespones fileResponse = fileUploadService.uploadSingle(file, path);
-                    newSaveFile = fileResponse.getName();
+                    newSaveFile = fileUploadService.saveFile(file, path);
                 } else {
                     newSaveFile = updateProduct.getProductImage();
                 }
